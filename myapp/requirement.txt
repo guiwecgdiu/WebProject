@@ -1,0 +1,3 @@
+python -m venv flaskenv
+pip install flask
+pip install python-dotenv
