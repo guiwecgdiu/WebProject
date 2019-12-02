@@ -1,18 +1,61 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="root" class="bg-gray-light">
+        <header class="position-fixed bg-gray-dark text-white border-bottom width-full">
+            <nav class="ml-6 mr-6 p-3"> <h3>xxx.blog</h3> </nav>
+        </header>
+        
+        <aside class="position-fixed border-right bg-white height-full" style="top:62px">
+            <div class=" text-emphasized f4 p-6" style="width: 340px;">
+                <p>Ever tired of searching, I have learned to find what is right; </p>
+                <p>since a headwind has struck me, I have been able to withstand wind from all directions and travel by boat.</p>
+            </div>
+        </aside>
 
+        <main class="d-flex height-full" style="padding-top: 72px;">
+            <div style="width: 340px; min-height: 950px"></div>
+            <article class="d-flex flex-column flex-items-center p-6" style="min-height: 950px">
 
-{% block title %}Index Page{% endblock %}
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
 
-{% block head_content %}
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
 
-{% endblock %}
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
 
-{% block page_content %}
-<div class="page-header"/>
-<h1> <strong>Home Page</strong></h1>
-</div>
-<h3>Current UTC Time : {{ current_time }}</h3>
-<h3>Current Date Time : {{ moment(current_time).format('LLL') }}</h3>
-<h3>That was : {{ moment(current_time).fromNow(refresh=True) }}</h3>
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
 
-{% endblock %}
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
+
+                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
+                    <a class="f3" href="/archive/1">archive title</a>
+                    <p class="f5">this is archive summary.</p>
+                </section>
+
+            </article>
+        </main>
+
+    </div>
+</body>
+</html>
