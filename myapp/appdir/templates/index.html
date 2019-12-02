@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block title %}Index Page{% endblock %}
+
+{% block head_content %}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header"/>
+<h1> <strong>Home Page</strong></h1>
+</div>
+<h3>Current UTC Time : {{ current_time }}</h3>
+<h3>Current Date Time : {{ moment(current_time).format('LLL') }}</h3>
+<h3>That was : {{ moment(current_time).fromNow(refresh=True) }}</h3>
+
+{% endblock %}

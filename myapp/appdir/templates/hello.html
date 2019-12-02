@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>base Template</title>
+  </head>
+  <body>
+    <h1>
+      {% if user %}
+          Hello {{name}}!
+        {% else %}
+            Hello Stranger！
+        {% endif %}
+      </h1>
+
+    <ol>
+        <li>A value from a dictionary{{mylist[0]}}</li>
+        <li>A value from a list: {{mylist[1]}}</li>
+        <li>A value from a list with a variable index{{mydict[index]}}</li>
+        <li>A value from a object's method {{test|capitalize}}</li>
+        {% import "macro.html" as macro %}
+
+        {% for comment in comments%}
+          {{macro.render_comment(comment)}}
+        {% endfor %}
+
+    </ol>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+#nav-bar{
+  background: #282828;
+    font-size: 24px;
+    color:azure;
+    padding: 3px;
+    text-align: end;
+    padding-right: 10px;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    width: 100%;
+    border: white;
+
+
+}
+#nav-bar a{
+color: white;
+ }
+#nav-bar a:link{
+    text-decoration: none;
+    color: white;
+}
+#nav-bar a:hover{
+    color: gray;
+
+}
+
+
+#navIcon{
+  font-size: 120%;
+  border: white;
+  color: white;
+}
+
+#navIcon a:hover{
+  color: white;
+}
+
+#content{
+  position: fixed;
+  top: 40px;
+  font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+
+
