@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for("static",filename="style/navbar.css") }}">
+
+    <title>
+    {% block title %}
+
+    {% endblock %}
+    </title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="nav-bar">
+
+      <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('doc') }}">Doc</a></span>
+    </div>
+    <div id="content">
+    {% block page_content %}
+
+    {% endblock %}
+    </div>
+  </body>
+</html>

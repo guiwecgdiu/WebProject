@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404 Page</title>
-    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-</head>
-<body>
-    <div id="root">
-        <main class="m-6 p-6">
-            <h1 class="m-2 text-center" style="font-size: 100px;">404</h1>
-            <p class="m-2 text-center f3 text-blue" >Sorry Not Found</p>
-        </main>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block page_content %}
+<h1>The page is Lost</h1>
+{% endblock page_content %}
