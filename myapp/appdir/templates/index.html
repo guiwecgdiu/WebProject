@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
-    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block page_content %}
     <div id="root" class="bg-gray-light">
+        <div class="left_side">
         <header class="position-fixed bg-gray-dark text-white border-bottom width-full">
             <nav class="ml-6 mr-6 p-3"> <h3>xxx.blog</h3> </nav>
         </header>
-        
-        <aside class="position-fixed border-right bg-white height-full" style="top:62px">
-            <div class=" text-emphasized f4 p-6" style="width: 340px;">
+
+        <aside class="left_side" >
                 <p>Ever tired of searching, I have learned to find what is right; </p>
                 <p>since a headwind has struck me, I have been able to withstand wind from all directions and travel by boat.</p>
-            </div>
         </aside>
+        </div>
 
-        <main class="d-flex height-full" style="padding-top: 72px;">
+        <main class="blog_items" style="padding-top: 72px;">
             <div style="width: 340px; min-height: 950px"></div>
             <article class="d-flex flex-column flex-items-center p-6" style="min-height: 950px">
 
@@ -57,5 +51,4 @@
         </main>
 
     </div>
-</body>
-</html>
+{% endblock %}

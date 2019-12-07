@@ -12,17 +12,21 @@
     </title>
     {% endblock %}
   </head>
-  <body>
-    <div id="nav-bar">
+  <body style="overflow: scroll">
+  {% block body %}
 
+
+    <div id="nav-bar">
       <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
-      <a href="{{ url_for('index') }}">Home</a>
-      <a href="{{ url_for('doc') }}">Doc</a></span>
+      <a href="{{ url_for('index') }}" class="menuicon">Home</a>
+      <a href="{{ url_for('doc') }}" class="menuicon">Doc</a></span>
     </div>
     <div id="content">
     {% block page_content %}
-
+        {% block aside %}
+        {% endblock %}
     {% endblock %}
     </div>
+  {% endblock %}
   </body>
 </html>

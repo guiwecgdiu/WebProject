@@ -1,18 +1,18 @@
 #nav-bar{
   background: #282828;
+  width: 110%;
+  height: 10%;
     font-size: 24px;
     color:azure;
-    padding: 3px;
-    text-align: end;
-    padding-right: 10px;
+    padding:20px 10px 0px 0px;
     position: fixed;
-    top: 30px;
-    right: 20px;
-    width: 100%;
-    border: white;
-
-
+    top:-10px;
+    right: -20px;
+    elevation: higher;
+    border: black;
+    z-index: 100;
 }
+
 #nav-bar a{
 color: white;
  }
@@ -26,10 +26,22 @@ color: white;
 }
 
 
-#navIcon{
-  font-size: 120%;
+.navIcon{
+  font-size: 125%;
   border: white;
   color: white;
+  alignment: left;
+    position: relative;
+    alignment: center;
+    top: 20px;
+    left: 200px;
+
+}
+
+.menuicon{
+  position: relative;
+    left: 1200px;
+  top: 20%;
 }
 
 #navIcon a:hover{
@@ -38,8 +50,29 @@ color: white;
 
 #content{
   position: fixed;
-  top: 40px;
+    top: 10%;
   font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+.left_side{
+    width: 380px;
+    height: 100%;
+    border: solid;
+    margin-left: -20px;
+    padding:10px 20px 0px 40px;
+    z-index: 10;
+    background: lightgray;
+    position: fixed;
+    left: 0px;
+    top: 10%;
+}
+
+.blog_items{
+    position: relative;
+    left: 680px;
+    top: -1000px;
+    overflow: scroll;
+
 }
 
 
