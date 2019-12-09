@@ -7,7 +7,21 @@
 {% block content %}
 
 <div class="introduce">
+
+{% if user %}
+    <h1> Hello, {{ user }}</h1>
+{% else %}
 <h1>Welcome to this blog</h1>
+ {% endif %}
 <p>This blog is sent for a tech post sharing.....</p>
 </div>
+{% endblock %}
+
+{% block login %}
+    {% if user %}
+    <span class="menuicon"><a  href="{{ url_for('doc') }}">{{ user }}</a>
+      </span>
+    {% else %}
+    {{ super() }}
+    {% endif %}
 {% endblock %}

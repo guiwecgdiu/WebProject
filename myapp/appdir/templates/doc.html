@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import "macro.html" as macro %}
 
 {% block other_css %}
        <link rel="stylesheet" href="{{ url_for("static",filename="style/blogitem.css") }}">
@@ -7,6 +7,12 @@
 
 
 {% block page_side %}
+    <div>
+            Microblog:
+			<a href="{{ url_for('post') }}">Write a Post</a>
+			<a href="{{ url_for('profile') }}">Edit Profile</a>
+			<a href="{{ url_for('logout') }}">Logout</a>
+    </div>
                 <p>Ever tired of searching, I have learned to find what is right; </p>
                 <p>since a headwind has struck me, I have been able to withstand wind from all directions and travel by boat.</p>
 {% endblock %}
@@ -19,42 +25,30 @@
 {% block main %}
             <article>
 
-                <section class="blog_item_bg">
+            {% if prev_posts %}
+		{% for post in prev_posts %}
+            <section class="blog_item_bg">
                     <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
+                    <p class="f5">{{ post }}</p>
                 </section>
-
-                <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
+		{% endfor %}
+		<hr>
+	{% else %}
+		<p>No previous posts!</p>
+		<hr>
+	{% endif %}
 
             </article>
-
-
 {% endblock %}
 
 {% block footer %}
 {% endblock %}
-
+{% block login %}
+    {% if user %}
+    <span class="menuicon"><a  href="{{ url_for('doc') }}">{{ user }}</a>
+      </span>
+    {% else %}
+    {{ super() }}
+    {% endif %}
+{% endblock %}
 
