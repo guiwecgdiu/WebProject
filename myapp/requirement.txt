@@ -1,3 +1,5 @@
-python -m venv flaskenv
-pip install flask
-pip install python-dotenv
+flask
+python-dotenv
+flask_moment
+flask-bootstrap
+flask_wtf
