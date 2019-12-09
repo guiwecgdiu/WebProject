@@ -38,11 +38,12 @@
 
   </div>
 
+
   <div id="nav-bar">
       <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
       <a href="{{ url_for('index') }}" class="menuicon">Home |</a>
       <a href="{{ url_for('doc') }}" class="menuicon">Doc | </a></span>
-      <a href="{{ url_for('doc') }}" class="menuicon">Error|</a>
+      <a href="{{ url_for('doc') }}" class="menuicon">News|</a>
   {% block login %}
       <span class="menuicon"><a  href="{{ url_for('login') }}">Login</a>
       </span>
@@ -58,6 +59,7 @@
             <p align="center"> &copy 2019 Arno Li</p>
     </footer>
     {% endblock %}
+
 
   </body>
 </html>

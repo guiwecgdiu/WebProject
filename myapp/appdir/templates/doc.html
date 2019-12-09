@@ -45,7 +45,7 @@
 {% endblock %}
 {% block login %}
     {% if user %}
-    <span class="menuicon"><a  href="{{ url_for('doc') }}">{{ user }}</a>
+    <span class="menuicon"><a  href="{{ url_for('profile') }}">{{ user }}</a>
       </span>
     {% else %}
     {{ super() }}

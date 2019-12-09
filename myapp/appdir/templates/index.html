@@ -2,6 +2,13 @@
 
 {% block css %}
    <link rel="stylesheet" href="{{ url_for("static",filename="style/gene_home_page.css") }}">
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
 {% endblock %}
 
 {% block content %}
@@ -15,11 +22,19 @@
  {% endif %}
 <p>This blog is sent for a tech post sharing.....</p>
 </div>
+
+
+
+    <div class="base">
+<h3>Current UTC Time : {{ current_time }}</h3>
+<h3>Current Date Time : {{ moment(current_time).format('LLL') }}</h3>
+<h3>That was : {{ moment(current_time).fromNow(refresh=True) }}</h3>
+</div>
 {% endblock %}
 
 {% block login %}
     {% if user %}
-    <span class="menuicon"><a  href="{{ url_for('doc') }}">{{ user }}</a>
+    <span class="menuicon"><a  href="{{ url_for('profile') }}">{{ user }}</a>
       </span>
     {% else %}
     {{ super() }}

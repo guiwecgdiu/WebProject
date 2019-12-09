@@ -8,7 +8,7 @@
 
 }
 
-.siteInfo{
+.siteInfo {
     background-color: #f3f3f3;
     position: relative;
     left: 80%;
@@ -17,6 +17,10 @@
     color: cornflowerblue;
     height: 600px;
     padding: 20px;
+}
 
-
+.avatar {
+  border-radius: 50%;
+    width:90px;
+    height: 90px;
 }

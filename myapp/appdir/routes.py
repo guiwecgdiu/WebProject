@@ -4,13 +4,16 @@ from appdir import app, db
 from appdir.forms import LoginForm, SignupForm, ProfileForm, PostForm
 from appdir.models import User,Post, Profile
 from appdir.config import Config
+from appdir import moment
+from datetime import datetime
+
 import os
 
 @app.route('/')
 @app.route('/index')
 def index():
 	user = session.get("USERNAME")
-	return render_template('index.html', title='Home', user=user)
+	return render_template('index.html', title='Home', user=user,current_time=datetime.utcnow())
 
 
 
@@ -82,7 +85,7 @@ def signup():
 		session["USERNAME"] = user.username
 		return render_template('choice.html', user=user)
 	return render_template('signup.html', title='Register a new user', form=form)
-	
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
 	form = ProfileForm()
@@ -105,19 +108,19 @@ def profile():
 				# else, modify the existing object with form data
 				stored_profile.dob = form.dob.data
 				stored_profile.gender = form.gender.data
-			# remember to commit	
+			# remember to commit
 			db.session.commit()
 			return redirect(url_for('choice'))
 		else:
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			stored_profile = Profile.query.filter(Profile.user == user_in_db).first()
 			if not stored_profile:
-				return render_template('profile.html', title='Add your profile', form=form)
+				return render_template('profile.html', title='Add your profile',user=session.get("USERNAME"),form=form)
 			else:
 				form.dob.data = stored_profile.dob
 				form.gender.data = stored_profile.gender
-				return render_template('profile.html', title='Modify your profile', form=form)
-				
+				return render_template('profile.html', title='Modify your profile',user=session.get("USERNAME"), form=form)
+
 	else:
 		flash("User needs to either login or signup first")
 		return redirect(url_for('login'))
@@ -147,7 +150,7 @@ def post():
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()
 			print("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
-			return render_template('post.html', title='User Posts', prev_posts=prev_posts, form=form)
+			return render_template('post.html', title='User Posts', prev_posts=prev_posts,user=session.get("USERNAME"),form=form)
 	else:
 		flash("User needs to either login or signup first")
 		return redirect(url_for('login'))
