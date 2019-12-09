@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     {% block head %}
+    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for("static",filename="style/navbar.css") }}">
-
     <title>
     {% block title %}
 
@@ -15,18 +15,20 @@
   <body style="overflow: scroll">
   {% block body %}
 
-
-    <div id="nav-bar">
-      <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
-      <a href="{{ url_for('index') }}" class="menuicon">Home</a>
-      <a href="{{ url_for('doc') }}" class="menuicon">Doc</a></span>
-    </div>
-    <div id="content">
+    <header class="position-fixed bg-gray-dark text-white border-bottom width-full">
+      <nav class="ml-6 mr-6 p-3 text-white"> 
+          <span>
+            <a class="p-2 h3 text-white" href="{{ url_for('index') }}">TECHBLOG</a>
+          </span>
+          <a href="{{ url_for('index') }}" class="p-2 h3 text-white">Home</a>
+          <a href="{{ url_for('doc') }}" class="p-2 h3 text-white">Doc</a></span>
+      </nav>
+    </header>
+    <div style="min-height: 62px;"></div>
     {% block page_content %}
-        {% block aside %}
-        {% endblock %}
+
     {% endblock %}
-    </div>
+
   {% endblock %}
   </body>
 </html>
