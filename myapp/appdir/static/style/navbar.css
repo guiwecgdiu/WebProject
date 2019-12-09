@@ -1,10 +1,11 @@
 #nav-bar{
-  background: #282828;
+  /*background: #282828;*/
+  background: #f3f3f3;
   width: 110%;
   height: 10%;
     font-size: 24px;
-    color:azure;
-    padding:20px 10px 0px 0px;
+    color:gray;
+    padding:1% 1% 0px 0px;
     position: fixed;
     top:-10px;
     right: -20px;
@@ -14,65 +15,44 @@
 }
 
 #nav-bar a{
-color: white;
+color: gray;
  }
 #nav-bar a:link{
     text-decoration: none;
-    color: white;
+    color: gray;
 }
 #nav-bar a:hover{
-    color: gray;
+    color: white;
 
 }
+
+
+
 
 
 .navIcon{
+    height: 10%;
+    width: auto;
   font-size: 125%;
   border: white;
-  color: white;
-  alignment: left;
+  color: Black;
     position: relative;
-    alignment: center;
-    top: 20px;
-    left: 200px;
-
+    top: 15%;
+    left: 10%;
 }
 
+
 .menuicon{
+    height: 5%;
+    width: auto;
+    color: black;
   position: relative;
-    left: 1200px;
+    left: 70%;
   top: 20%;
 }
 
 #navIcon a:hover{
-  color: white;
-}
-
-#content{
-  position: fixed;
-    top: 10%;
-  font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
-}
-
-.left_side{
-    width: 380px;
-    height: 100%;
-    border: solid;
-    margin-left: -20px;
-    padding:10px 20px 0px 40px;
-    z-index: 10;
-    background: lightgray;
-    position: fixed;
-    left: 0px;
-    top: 10%;
-}
-
-.blog_items{
-    position: relative;
-    left: 680px;
-    top: -1000px;
-    overflow: scroll;
-
+  color: black;
 }
 
 

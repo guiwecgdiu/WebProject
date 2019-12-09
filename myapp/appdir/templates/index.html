@@ -1,54 +1,13 @@
-{% extends "base.html" %}
+{% extends "template.html" %}
 
-{% block page_content %}
-    <div id="root" class="bg-gray-light">
-        <div class="left_side">
-        <header class="position-fixed bg-gray-dark text-white border-bottom width-full">
-            <nav class="ml-6 mr-6 p-3"> <h3>xxx.blog</h3> </nav>
-        </header>
+{% block css %}
+   <link rel="stylesheet" href="{{ url_for("static",filename="style/gene_home_page.css") }}">
+{% endblock %}
 
-        <aside class="left_side" >
-                <p>Ever tired of searching, I have learned to find what is right; </p>
-                <p>since a headwind has struck me, I have been able to withstand wind from all directions and travel by boat.</p>
-        </aside>
-        </div>
+{% block content %}
 
-        <main class="blog_items" style="padding-top: 72px;">
-            <div style="width: 340px; min-height: 950px"></div>
-            <article class="d-flex flex-column flex-items-center p-6" style="min-height: 950px">
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-                <section class="bg-white border box-shadow m-3 p-4" style="width: 950px;">
-                    <a class="f3" href="/archive/1">archive title</a>
-                    <p class="f5">this is archive summary.</p>
-                </section>
-
-            </article>
-        </main>
-
-    </div>
+<div class="introduce">
+<h1>Welcome to this blog</h1>
+<p>This blog is sent for a tech post sharing.....</p>
+</div>
 {% endblock %}

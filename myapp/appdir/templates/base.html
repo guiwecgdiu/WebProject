@@ -4,29 +4,58 @@
     <meta charset="utf-8">
     {% block head %}
     <link rel="stylesheet" href="{{ url_for("static",filename="style/navbar.css") }}">
-
+    <link rel="stylesheet" href="{{ url_for("static",filename="style/structure.css") }}">
+     {% block other_css %}
+     {% endblock %}
     <title>
     {% block title %}
-
     {% endblock %}
     </title>
     {% endblock %}
   </head>
-  <body style="overflow: scroll">
-  {% block body %}
 
+  <body style="overflow: scroll" background="black">
+  <div class="container" >
 
-    <div id="nav-bar">
-      <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
-      <a href="{{ url_for('index') }}" class="menuicon">Home</a>
-      <a href="{{ url_for('doc') }}" class="menuicon">Doc</a></span>
-    </div>
-    <div id="content">
-    {% block page_content %}
-        {% block aside %}
+    {% block body %}
+
+    <main class="main">
+        {% block main %}
+
         {% endblock %}
+
+    </main>
+
+
+
+
+    <div class="left_column">
+    {% block page_side %}
+
     {% endblock %}
     </div>
-  {% endblock %}
+    {% endblock %}
+
+  </div>
+
+  <div id="nav-bar">
+      <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
+      <a href="{{ url_for('index') }}" class="menuicon">Home |</a>
+      <a href="{{ url_for('doc') }}" class="menuicon">Doc | </a></span>
+      <a href="{{ url_for('doc') }}" class="menuicon">Error|</a>
+      <span class="menuicon"><a style="background-image: url('{{ url_for("static",filename="img/people.png")}}');">Login</a>
+      </span>
+      <link rel="shortcut icon" href="{{ url_for("static",filename="img/login.svg") }}" type="image/x-icon">{% block links %}
+
+      {% endblock %}
+    </div>
+
+  {% block footer %}
+    <footer>
+            <hr>
+            <p align="center"> &copy 2019 Arno Li</p>
+    </footer>
+    {% endblock %}
+
   </body>
 </html>

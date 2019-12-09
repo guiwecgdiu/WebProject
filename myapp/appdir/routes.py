@@ -5,18 +5,18 @@ from appdir.form import NameForm
 
 @app.route('/')
 def index():
-    return render_template('index.html',current_time=datetime.utcnow())
+    return render_template('index.html')
 
 @app.route('/doc')
 def doc():
     form =NameForm()
-    return render_template('subpage.html',form=form)
+    return render_template('doc.html')
 
 
 @app.errorhandler(404)
-def bar(error):
+def error(error):
         return render_template('404.html'), 404
 
 @app.errorhandler(500)
-def bar(error):
+def exception(error):
         return render_template('404.html'), 500
