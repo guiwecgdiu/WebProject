@@ -65,7 +65,7 @@ def login():
 		if (check_password_hash(user_in_db.password_hash, form.password.data)):
 			flash('Login success!')
 			session["USERNAME"] = user_in_db.username
-			return render_template('choice.html', user=user_in_db)
+			return redirect(url_for('doc'))
 		flash('Incorrect Password')
 		return redirect(url_for('login'))
 	return render_template('login.html', title='Sign In', form=form)
@@ -83,7 +83,7 @@ def signup():
 		db.session.commit()
 		flash('User registered with username:{}'.format(form.username.data))
 		session["USERNAME"] = user.username
-		return render_template('choice.html', user=user)
+		return redirect(url_for('doc'))
 	return render_template('signup.html', title='Register a new user', form=form)
 
 @app.route('/profile', methods=['GET', 'POST'])
@@ -145,7 +145,8 @@ def post():
 			post = Post(body=body, author = user_in_db)
 			db.session.add(post)
 			db.session.commit()
-			return redirect(url_for('post'))
+			flash("Fuck")
+			return redirect(url_for('index'))
 		else:
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()

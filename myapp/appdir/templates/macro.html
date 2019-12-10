@@ -1,4 +1,4 @@
-{% macro render_comment(comment) -%}
+{% macro render_comment(comment) %}
     <li>{{comment}}</li>
 {%- endmacro %}
 
@@ -9,4 +9,9 @@
                     <a class="f3" href="/archive/1">archive title</a>
                     <p class="f5">{{ post }}</p>
                 </section>
+{% endmacro %}
+
+{% macro render_profile(field,value) %}
+      <h3 style="font-size: 16px">{{ field }}: <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >{{ value }}</span></h3>
+
 {% endmacro %}

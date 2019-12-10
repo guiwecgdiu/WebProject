@@ -13,24 +13,27 @@
 
 {% block content %}
 
-<div class="introduce">
+<div class="element_bg" style="padding: 10px">
 
 {% if user %}
     <h1> Hello, {{ user }}</h1>
 {% else %}
 <h1>Welcome to this blog</h1>
  {% endif %}
-<p>This blog is sent for a tech post sharing.....</p>
-</div>
+<p>This blog is built for a tech post sharing.....</p>
 
-
-
-    <div class="base">
-<h3>Current UTC Time : {{ current_time }}</h3>
+<div style="position: relative; left: 60%; bottom:100px; alignment: top; font-size: 14px"  >
+<h3>Current(UTC) : {{ current_time }}</h3>
 <h3>Current Date Time : {{ moment(current_time).format('LLL') }}</h3>
 <h3>That was : {{ moment(current_time).fromNow(refresh=True) }}</h3>
 </div>
+</div>
+
+
 {% endblock %}
+
+
+
 
 {% block login %}
     {% if user %}

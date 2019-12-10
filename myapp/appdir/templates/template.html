@@ -1,24 +1,60 @@
 {% extends "base.html" %}
-
+{% import "macro.html" as macro %}
 
 {% block other_css %}
 <link rel="stylesheet" href="{{ url_for("static",filename="style/general.css") }}"/>
-
 {% block css %}
 {% endblock %}
 {% endblock %}
-
-
+{% block script %}
+    <script>
+        function close_flash_message(){
+            let al = document.querySelector('.alerts');
+            alert(al.length);
+            return false;
+        }
+    </script>
+{% endblock %}
 
 {% block body%}
+     {% for message in get_flashed_messages() %}
+  <div class="alert">
+  <ul class="alters">
+    <li class="message"><button type="button" class="close" onclick="close_flash_message()" data-dismiss="alert">&times</button>
+      {{ message }} </li>
+   </ul>
+  </div>
+  </div>
+
+  {% endfor %}
 <div class="content">
 {% block content %}
 {% endblock %}
 </div>
 
+
+
 <div class="siteInfo">
     <p>About Me</p>
 <img class=avatar src="{{ url_for("static",filename="img/avater.png") }}">
+    <span style="font-size: 20px; position: relative; bottom: 40px; border:lightblue solid" ><Strong>Jiadi Li</Strong></span>
+<br>
+<i>or call me "Arno"  </i>
+    <hr>
+    {{ macro.render_profile("UCD NUMBER","17205985") }}
+    {{ macro.render_profile("Major","Software engineer") }}
+    {{ macro.render_profile("I LIKE","Sleep") }}
+    {{ macro.render_profile("State","In college") }}
+    {{ macro.render_profile("DISLIKE","Assignments...") }}
+      <h3 style="font-size: 16px">Github: <a href="https://github.com/guiwecgdiu?tab=repositories" style="color:
+      black;font-size:16px; font-style: italic;padding: 0;" >github.com</a></h3>
+    <br>
+    <p style="width: 100%">I will post some of my finding here. Welcome you guys to login as my guests and share your post here!!</p>
+
+    <br>
+
+
+
 </div>
 {% endblock %}
 
