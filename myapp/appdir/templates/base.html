@@ -45,15 +45,14 @@
   <div id="nav-bar">
       <span class="navIcon"><a href="{{ url_for("index") }}">TECHBLOG</a></span>
       <a href="{{ url_for('index') }}" class="menuicon">Home |</a>
-      <a href="{{ url_for('doc') }}" class="menuicon">Doc | </a></span>
-      <a href="{{ url_for('doc') }}" class="menuicon">News|</a>
+      <a href="{{ url_for('doc') }}" class="menuicon">My Posts | </a></span>
+
   {% block login %}
       <span class="menuicon"><a  href="{{ url_for('login') }}">Login</a>
       </span>
   {% endblock %}
-      <link rel="shortcut icon" href="{{ url_for("static",filename="img/login.svg") }}" type="image/x-icon">{% block links %}
 
-      {% endblock %}
+
     </div>
 
   {% block footer %}

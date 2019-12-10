@@ -1,7 +1,7 @@
 .blog_items {
     background: palegreen;
     height: auto;
-
+    padding: 20px;
     width: 70%;
     position: absolute;
     top: 8%;

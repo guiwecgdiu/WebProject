@@ -15,7 +15,7 @@
 <div class="element_bg" style="padding: 10px">
 
 {% if user %}
-    <h1> Hello, {{ user }}</h1>
+    <h1> Hello, {{ user.username }}</h1>
 {% else %}
 <h1>Welcome to this blog</h1>
  {% endif %}
@@ -23,8 +23,7 @@
 
 <div style="position: relative; left: 60%; bottom:100px; alignment: top; font-size: 14px"  >
 <h3>Current(UTC) : {{ current_time }}</h3>
-<h3>Current Date Time : {{ moment(current_time).format('LLL') }}</h3>
-<h3>That was : {{ moment(current_time).fromNow(refresh=True) }}</h3>
+
 </div>
 </div>
 
@@ -38,7 +37,7 @@
           {% if dict %}
 		{% for post in dict %}
             <section class="element_bg" style="width: 28%; display: inline-block">
-                    <a class="f3" href="/archive/1">{{ post[0].title}}</a>
+                    <p>{{ post[0].title}}</p>
                     <p>Author:{{ post[1] }}</p>
                     <p>Time:{{ post[0].time() }}</p>
                     <p class="f5">{{ post[0] }}</p>
@@ -59,7 +58,7 @@
 
 {% block login %}
     {% if user %}
-    <span class="menuicon"><a  href="{{ url_for('profile') }}">{{ user }}</a>
+    <span class="menuicon"><a  href="{{ url_for('profile') }}">{{ user.username }}</a>
       </span>
     {% else %}
     {{ super() }}

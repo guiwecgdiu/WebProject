@@ -20,9 +20,11 @@ def index():
 		dic=[post,name]
 		print(dic)
 		list.append(dic)
-	user = session.get("USERNAME")
+	username = session.get("USERNAME")
+	user=User.query.filter(User.username == username).first()
 	print(list)
-	return render_template('index.html', title='Home', dict=list, user=user,current_time=datetime.utcnow())
+	profile=User.profile
+	return render_template('index.html', title='Home', dict=list, profile=profile, user=user,current_time=datetime.utcnow())
 
 
 @app.route('/doc')
@@ -41,7 +43,7 @@ def doc():
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()
 			print("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
-			return render_template('doc.html', title='User Posts',user=user, prev_posts=prev_posts, form=form)
+			return render_template('doc.html', title='User Posts',user=user_in_db, prev_posts=prev_posts, form=form)
 	else:
 		flash("User needs to either login or signup first")
 		return redirect(url_for('login'))
@@ -98,19 +100,15 @@ def signup():
 def profile():
 	form = ProfileForm()
 	if not session.get("USERNAME") is None:
+		user = User.query.filter(User.username == session.get("USERNAME")).first()
 		if form.validate_on_submit():
-			cv_dir = Config.CV_UPLOAD_DIR
-			file_obj = form.cv.data
-			cv_filename = session.get("USERNAME") + '_CV.pdf'
-			file_obj.save(os.path.join(cv_dir, cv_filename))
-			flash('CV uploaded and saved')
 			# now we add the object to the database
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			#check if user already has a profile
 			stored_profile = Profile.query.filter(Profile.user == user_in_db).first()
 			if not stored_profile:
 				# if no profile exists, add a new object
-				profile = Profile(dob=form.dob.data, gender=form.gender.data, cv=cv_filename,user=user_in_db)
+				profile = Profile(dob=form.dob.data, gender=form.gender.data, user=user_in_db)
 				db.session.add(profile)
 			else:
 				# else, modify the existing object with form data
@@ -118,30 +116,23 @@ def profile():
 				stored_profile.gender = form.gender.data
 			# remember to commit
 			db.session.commit()
-			return redirect(url_for('choice'))
+			return redirect(url_for('index'))
 		else:
+
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			stored_profile = Profile.query.filter(Profile.user == user_in_db).first()
 			if not stored_profile:
-				return render_template('profile.html', title='Add your profile',user=session.get("USERNAME"),form=form)
+				return render_template('profile.html', title='Add your profile',user=user_in_db,form=form)
 			else:
 				form.dob.data = stored_profile.dob
 				form.gender.data = stored_profile.gender
-				return render_template('profile.html', title='Modify your profile',user=session.get("USERNAME"), form=form)
+				return render_template('profile.html', title='Modify your profile',user=user_in_db, form=form)
 
 	else:
 		flash("User needs to either login or signup first")
 		return redirect(url_for('login'))
 		
-@app.route('/choice')
-def choice():
-	if not session.get("USERNAME") is None:
-		user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
-		return render_template('choice.html', user=user_in_db)
-	else:
-		flash("User needs to either login or signup first")
-		return redirect(url_for('login'))
-	
+
 		
 @app.route('/post', methods=['GET', 'POST'])
 def post():
@@ -161,7 +152,7 @@ def post():
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()
 			flash("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
-			return render_template('post.html', title='User Posts', prev_posts=prev_posts,user=session.get("USERNAME"),form=form)
+			return render_template('post.html', title='User Posts', prev_posts=prev_posts,user=user_in_db,form=form)
 	else:
 		flash("User needs to either login or signup first")
 		return redirect(url_for('login'))

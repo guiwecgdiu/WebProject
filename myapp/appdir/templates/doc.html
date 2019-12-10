@@ -7,11 +7,56 @@
 
 
 {% block page_side %}
-    <div>
-            Microblog:
-			<a href="{{ url_for('post') }}">Write a Post</a>
-			<a href="{{ url_for('profile') }}">Edit Profile</a>
-			<a href="{{ url_for('logout') }}">Logout</a>
+    <div style="">
+    <div class="siteInfo">
+    <p>Blog Space</p>
+    {% if user %}
+<img class=avatar src="{{ url_for("static",filename="img/avater.png") }}">
+    <span style="font-size: 20px; position: relative; bottom: 40px; border:lightblue solid" ><Strong>{{ user.username }}</Strong></span>
+<br>
+
+    <hr>
+        {% if user.profile.first() %}
+            {% if user.profile.first().gender == "1" %}
+         <h3 style="font-size: 16px">Gender:
+             <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >Female</span></h3>
+            {% else %}
+           <h3 style="font-size: 16px">Gender:
+             <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >Male</span></h3>
+             {% endif %}
+        {% else %}
+           <h3 style="font-size: 16px">Gender:
+             <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >none</span></h3>
+        {% endif %}
+            <h3 style="font-size: 16px">Email:
+        <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >{{ user.email}}</span></h3>
+        {% if user %}
+        <h3 style="font-size: 16px">Birthday: <span style="color:
+      black;font-size:16px; font-style: italic;padding: 0;" >{{user.profile.first().date() }}</span></h3>
+         {% else %}
+           <h3 style="font-size: 16px">Birthday: <span style="color:
+      black;font-size:16px; font-style: italic;padding: 0;" >None</span></h3>
+           {% endif %}
+      <h3 style="font-size: 16px">Github: <a href="https://github.com/guiwecgdiu?tab=repositories" style="color:
+      black;font-size:16px; font-style: italic;padding: 0;" >github.com</a></h3>
+{% else %}
+    <img class=avatar src="{{ url_for("static",filename="img/user.jpg") }}">
+    <span style="font-size: 20px; position: relative; bottom: 40px; border:lightblue solid" ><Strong>Log In</Strong></span>
+<br>
+
+    <hr>
+    {{ macro.render_profile("Gender","undefined") }}
+    {{ macro.render_profile("Emial","Undifined") }}
+    {{ macro.render_profile("Posts","Undifined") }}
+    {{ macro.render_profile("State","Undifined") }}
+{% endif %}
+
+</div>
+
+            Operation:<br>
+			<a href="{{ url_for('post') }}">Write a Post</a><br>
+			<a href="{{ url_for('profile') }}">Edit Profile</a><br>
+			<a href="{{ url_for('logout') }}">Logout</a><br>
     </div>
                 <p>Ever tired of searching, I have learned to find what is right; </p>
                 <p>since a headwind has struck me, I have been able to withstand wind from all directions and travel by boat.</p>
@@ -28,8 +73,10 @@
             {% if prev_posts %}
 		{% for post in prev_posts %}
             <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">{{ post.title }}</a>
-                    <p class="f5">{{ post }}</p>
+              <p style="float: bottom">
+                  <a style="font-size: 20px;position: relative;left: 5px"  href="">{{ post.title }}</a> <span style="position: relative;left: 80%">{{ post.time() }}</span></p>
+                    <p style="position: relative;left: 10px;font-style: italic;height: 100px;width: 95%;border: solid;" >{{ post.body }}</p>
+
                 </section>
 		{% endfor %}
 		<hr>
