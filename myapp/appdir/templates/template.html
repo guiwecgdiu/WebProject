@@ -9,8 +9,9 @@
 {% block script %}
     <script>
         function close_flash_message(){
-            let al = document.querySelector('.alerts');
-            alert(al.length);
+            let ul = document.querySelector('ul');
+            let li = document.querySelector('li')
+            ul.removeChild(li)
             return false;
         }
     </script>
@@ -19,13 +20,11 @@
 {% block body%}
      {% for message in get_flashed_messages() %}
   <div class="alert">
-  <ul class="alters">
-    <li class="message"><button type="button" class="close" onclick="close_flash_message()" data-dismiss="alert">&times</button>
+  <ul class="alters" style="float: top">
+    <li class="message" style="display: block"><button type="button" class="close" onclick="close_flash_message()" data-dismiss="alert">&times</button>
       {{ message }} </li>
    </ul>
   </div>
-  </div>
-
   {% endfor %}
 <div class="content">
 {% block content %}

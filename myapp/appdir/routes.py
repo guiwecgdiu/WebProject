@@ -140,17 +140,18 @@ def post():
 	form = PostForm()
 	if not session.get("USERNAME") is None:
 		if form.validate_on_submit():
+			flash("Commited")
 			body = form.postbody.data
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			post = Post(body=body, author = user_in_db)
 			db.session.add(post)
 			db.session.commit()
-			flash("Fuck")
 			return redirect(url_for('index'))
 		else:
+			flash("Flase")
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()
-			print("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
+			flash("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
 			return render_template('post.html', title='User Posts', prev_posts=prev_posts,user=session.get("USERNAME"),form=form)
 	else:
 		flash("User needs to either login or signup first")
