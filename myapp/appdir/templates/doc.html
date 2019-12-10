@@ -30,7 +30,7 @@
         {% endif %}
             <h3 style="font-size: 16px">Email:
         <span style="color: black;font-size:16px; font-style: italic;padding: 0;" >{{ user.email}}</span></h3>
-        {% if user %}
+        {% if user.profile.first()%}
         <h3 style="font-size: 16px">Birthday: <span style="color:
       black;font-size:16px; font-style: italic;padding: 0;" >{{user.profile.first().date() }}</span></h3>
          {% else %}

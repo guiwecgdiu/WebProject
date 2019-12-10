@@ -12,7 +12,7 @@ import os
 @app.route('/')
 @app.route('/index')
 def index():
-	prev_posts = Post.query.filter().all()
+	prev_posts = Post.query.filter().order_by(db.desc(Post.timestamp)).all()
 	list=[]
 	for post in prev_posts:
 		user=User.query.filter(User.id == post.user_id).first()

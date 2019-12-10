@@ -36,11 +36,11 @@
       <article>
           {% if dict %}
 		{% for post in dict %}
-            <section class="element_bg" style="width: 28%; display: inline-block">
+            <section class="element_bg" style="width: 28%; display: inline-block;color: black" >
                     <p>{{ post[0].title}}</p>
                     <p>Author:{{ post[1] }}</p>
                     <p>Time:{{ post[0].time() }}</p>
-                    <p class="f5">{{ post[0] }}</p>
+                    <p >{{ post[0].body }}</p>
                 </section>
 		{% endfor %}
 		<hr>
