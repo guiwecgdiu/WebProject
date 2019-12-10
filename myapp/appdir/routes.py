@@ -12,9 +12,17 @@ import os
 @app.route('/')
 @app.route('/index')
 def index():
+	prev_posts = Post.query.filter().all()
+	list=[]
+	for post in prev_posts:
+		user=User.query.filter(User.id == post.user_id).first()
+		name=user.username
+		dic=[post,name]
+		print(dic)
+		list.append(dic)
 	user = session.get("USERNAME")
-	return render_template('index.html', title='Home', user=user,current_time=datetime.utcnow())
-
+	print(list)
+	return render_template('index.html', title='Home', dict=list, user=user,current_time=datetime.utcnow())
 
 
 @app.route('/doc')

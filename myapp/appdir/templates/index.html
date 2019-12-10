@@ -5,7 +5,6 @@
 
 {% endblock %}
 
-
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
@@ -30,6 +29,29 @@
 </div>
 
 
+    <div class="element_bg" style="color: lightblue;font-style: initial;
+    background:#3a3a3a">
+        <h1> Post Hall </h1>
+
+
+      <article>
+          {% if dict %}
+		{% for post in dict %}
+            <section class="element_bg" style="width: 28%; display: inline-block">
+                    <a class="f3" href="/archive/1">{{ post[0].title}}</a>
+                    <p>Author:{{ post[1] }}</p>
+                    <p>Time:{{ post[0].time() }}</p>
+                    <p class="f5">{{ post[0] }}</p>
+                </section>
+		{% endfor %}
+		<hr>
+	{% else %}
+		<p>No previous posts!</p>
+		<hr>
+	{% endif %}
+      </article>
+
+ </div>
 {% endblock %}
 
 
