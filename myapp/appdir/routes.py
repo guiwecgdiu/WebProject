@@ -142,8 +142,9 @@ def post():
 		if form.validate_on_submit():
 			flash("Commited")
 			body = form.postbody.data
+			title = form.postTitle.data
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
-			post = Post(body=body, author = user_in_db)
+			post = Post(body=body, title=title, author = user_in_db)
 			db.session.add(post)
 			db.session.commit()
 			return redirect(url_for('index'))

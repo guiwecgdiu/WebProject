@@ -10,22 +10,22 @@
     <script>
         function close_flash_message(){
             let ul = document.querySelector('ul');
-            let li = document.querySelector('li')
-            ul.removeChild(li)
-            return false;
+            ul.innerHTML="";
         }
     </script>
 {% endblock %}
 
 {% block body%}
-     {% for message in get_flashed_messages() %}
+
   <div class="alert">
   <ul class="alters" style="float: top">
+       {% for message in get_flashed_messages() %}
     <li class="message" style="display: block"><button type="button" class="close" onclick="close_flash_message()" data-dismiss="alert">&times</button>
       {{ message }} </li>
+       {% endfor %}
    </ul>
   </div>
-  {% endfor %}
+
 <div class="content">
 {% block content %}
 {% endblock %}

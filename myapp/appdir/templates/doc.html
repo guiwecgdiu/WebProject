@@ -28,7 +28,7 @@
             {% if prev_posts %}
 		{% for post in prev_posts %}
             <section class="blog_item_bg">
-                    <a class="f3" href="/archive/1">archive title</a>
+                    <a class="f3" href="/archive/1">{{ post.title }}</a>
                     <p class="f5">{{ post }}</p>
                 </section>
 		{% endfor %}
