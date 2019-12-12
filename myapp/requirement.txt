@@ -1,5 +1,0 @@
-flask
-python-dotenv
-flask_moment
-flask-bootstrap
-flask_wtf
