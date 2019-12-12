@@ -63,7 +63,7 @@ def exception(error):
 
 
 
-
+# reference 1: part of below code from the assignment of week 13
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	form = LoginForm()
@@ -95,6 +95,8 @@ def signup():
 		session["USERNAME"] = user.username
 		return redirect(url_for('doc'))
 	return render_template('signup.html', title='Register a new user', form=form)
+# endReference
+
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
@@ -102,19 +104,14 @@ def profile():
 	if not session.get("USERNAME") is None:
 		user = User.query.filter(User.username == session.get("USERNAME")).first()
 		if form.validate_on_submit():
-			# now we add the object to the database
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
-			#check if user already has a profile
 			stored_profile = Profile.query.filter(Profile.user == user_in_db).first()
 			if not stored_profile:
-				# if no profile exists, add a new object
 				profile = Profile(dob=form.dob.data, gender=form.gender.data, user=user_in_db)
 				db.session.add(profile)
 			else:
-				# else, modify the existing object with form data
 				stored_profile.dob = form.dob.data
 				stored_profile.gender = form.gender.data
-			# remember to commit
 			db.session.commit()
 			return redirect(url_for('index'))
 		else:
@@ -148,7 +145,6 @@ def post():
 			db.session.commit()
 			return redirect(url_for('index'))
 		else:
-			flash("Flase")
 			user_in_db = User.query.filter(User.username == session.get("USERNAME")).first()
 			prev_posts = Post.query.filter(Post.user_id == user_in_db.id).all()
 			flash("Checking for user: {} with id: {}".format(user_in_db.username, user_in_db.id))
