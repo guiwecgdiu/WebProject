@@ -1,0 +1,66 @@
+{% extends "template.html" %}
+
+{% block css %}
+   <link rel="stylesheet" href="{{ url_for("static",filename="style/gene_home_page.css") }}">
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+
+{% block content %}
+
+<div class="element_bg" style="padding: 10px">
+
+{% if user %}
+    <h1> Hello, {{ user.username }}</h1>
+{% else %}
+<h1>Welcome to this blog</h1>
+ {% endif %}
+<p>This blog is built for a tech post sharing.....</p>
+
+<div style="position: relative; left: 60%; bottom:100px; alignment: top; font-size: 14px"  >
+<h3>Current(UTC) : {{ current_time }}</h3>
+
+</div>
+</div>
+
+
+    <div class="element_bg" style="color: lightblue;font-style: initial;
+    background:#3a3a3a">
+        <h1> Post Hall </h1>
+
+
+      <article>
+          {% if dict %}
+		{% for post in dict %}
+            <section class="element_bg" style="width: 85%; display: inline-block;color: black" >
+                    <p>{{ post[0].title}}</p>
+                    <p>Author:{{ post[1] }}</p>
+                    <p>Time:{{ post[0].time() }}</p>
+                    <p >{{ post[0].body }}</p>
+                </section>
+		{% endfor %}
+		<hr>
+	{% else %}
+		<p>No previous posts!</p>
+		<hr>
+	{% endif %}
+      </article>
+
+ </div>
+{% endblock %}
+
+
+
+
+{% block login %}
+    {% if user %}
+    <span class="menuicon"><a  href="{{ url_for('profile') }}">{{ user.username }}</a>
+      </span>
+    {% else %}
+    {{ super() }}
+    {% endif %}
+{% endblock %}
